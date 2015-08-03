@@ -24,5 +24,6 @@ public class ImageAdatper extends KJAdapter {
     @Override
     public void convert(AdapterHolder helper, Object item, boolean isScrolling) {
         helper.setImageByUrl(kjBitmap, R.id.image, item.toString());
+        helper.setText(R.id.text, item.toString());
     }
 }
