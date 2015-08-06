@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import com.cmbl.chemabuluo_kjf.base.BaseActivity;
 import com.cmbl.chemabuluo_kjf.service.MyService;
-import com.cmbl.chemabuluo_kjf.share.DialogShare;
-import com.cmbl.chemabuluo_kjf.share.ShareUnit;
+import com.cmbl.chemabuluo_kjf.widget.share.DialogShare;
+import com.cmbl.chemabuluo_kjf.widget.share.ShareUnit;
 import com.cmbl.chemabuluo_kjf.widget.ViewFactory;
 import com.witalk.widget.PullToRefreshView;
 import com.witalk.widget.cycleviewpager.ADInfo;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements View.OnFocusChangeListener {
     @BindView(id = R.id.tv_test, click = true)
     private TextView textView;
     @BindView(id = R.id.image)
@@ -34,11 +34,11 @@ public class MainActivity extends BaseActivity {
     private ListView mListView;
     private CycleViewPager cycleViewPager;
     @BindView(id = R.id.btn, click = true)
-    private TextView mButto;
+    private Button mButton;
     @BindView(id = R.id.btn2, click = true)
-    private TextView mButton2;
+    private Button mButton2;
     @BindView(id = R.id.btn3, click = true)
-    private TextView mButton3;
+    private Button mButton3;
     @BindView(id = R.id.context)
     private TextView mTextView;
 
@@ -60,7 +60,7 @@ public class MainActivity extends BaseActivity {
         super.setRootView();
         setMyContextView(R.layout.activity_main);
         dialog = new DialogShare(this, R.style.dialog, new ShareUnit());
-        dialog.windowDeploy(0, 0);
+        dialog.windowDeploy();
         cycleViewPager = (CycleViewPager) getFragmentManager()
                 .findFragmentById(R.id.cycleviewapger);
     }
@@ -78,11 +78,9 @@ public class MainActivity extends BaseActivity {
         super.onClick(v);
 //        ViewInject.toast("click " + v.getId());
 //        startService(intent);
-//        dialog.show();
-        v.setFocusable(true);
-        v.requestFocus();
-        v.setFocusableInTouchMode(true);
-        mTextView.setText(((TextView)v).getText().toString());
+        dialog.show();
+//        v.requestFocus();
+        mTextView.setText(((TextView)v).getText().toString() + v.getId());
     }
 
 
@@ -112,7 +110,10 @@ public class MainActivity extends BaseActivity {
 //        mPullToRefreshView.setEnablePullTorefresh(false);
 //        mPullToRefreshView.setEnablePullLoadMoreDataStatus(false);
 
-        mButto.performClick();
+//        mButton.performClick();
+        mButton.setOnFocusChangeListener(this);
+        mButton2.setOnFocusChangeListener(this);
+        mButton3.setOnFocusChangeListener(this);
 
         for(int i = 0; i < imageUrls.length; i ++){
             ADInfo info = new ADInfo();
@@ -147,5 +148,11 @@ public class MainActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         stopService(intent);
+    }
+
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        if (hasFocus)
+            v.performClick();
     }
 }

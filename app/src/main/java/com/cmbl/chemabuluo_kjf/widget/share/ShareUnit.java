@@ -1,4 +1,4 @@
-package com.cmbl.chemabuluo_kjf.share;
+package com.cmbl.chemabuluo_kjf.widget.share;
 
 /***
  * 分享实体类

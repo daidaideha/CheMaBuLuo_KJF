@@ -27,9 +27,9 @@
         android:orientation="horizontal"
         android:layout_below="@+id/cycleviewapger">
 
-        <TextView
+        <Button
             android:id="@+id/btn"
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Button"
             android:drawableTop="@mipmap/ic_launcher"
@@ -38,9 +38,9 @@
             android:focusable="true"
             android:focusableInTouchMode="true" />
 
-        <TextView
+        <Button
             android:id="@+id/btn2"
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Button"
             android:textColor="@color/button_text"
@@ -49,9 +49,9 @@
             android:drawableTop="@mipmap/ic_launcher"
             android:gravity="center_horizontal" />
 
-        <TextView
+        <Button
             android:id="@+id/btn3"
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Button"
             android:textColor="@color/button_text"

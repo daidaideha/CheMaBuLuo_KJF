@@ -1,4 +1,4 @@
-package com.cmbl.chemabuluo_kjf.share;
+package com.cmbl.chemabuluo_kjf.widget.share;
 /**
  * 该类定义了微博授权时所需要的参数。
  * 
