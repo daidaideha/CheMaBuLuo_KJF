@@ -17,6 +17,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.cmbl.chemabuluo_kjf.base.FinalValue;
+import com.witalk.widget.CMBLTools;
 
 import org.kymjs.kjframe.utils.KJLoger;
 
@@ -34,31 +35,6 @@ import java.security.NoSuchAlgorithmException;
  *
  */
 public class HttpTools {
-
-	/***
-	 * 
-	 * @author Pro.Linyl
-	 * @CreateTime 2015年6月5日
-	 * @UpdateAuthor Pro.Linyl
-	 * @UpdateTime 2015年6月5日
-	 * @description 获取当前应用程序的版本号
-	 *
-	 * @param context application
-	 * @return 版本名,版本号（versionName+ "," + versionCode）
-	 */
-	private static String getVersion(Application context) {
-		String versionInfo = "";
-		PackageManager pm = context.getPackageManager();
-		try {
-			PackageInfo packinfo = pm.getPackageInfo(context.getPackageName(), 0);
-			versionInfo += packinfo.versionName;
-			versionInfo += ("," + packinfo.versionCode);
-		} catch (NameNotFoundException e) {
-			e.printStackTrace();
-		}
-		return versionInfo;
-	}
-	
 	/***
 	 * 
 	 * @author Pro.Linyl
@@ -75,7 +51,7 @@ public class HttpTools {
 			Log.e(FinalValue.Http_Tag, "the HttpBodyBase is null");
 			return;
 		}
-		String[] versionInfo = getVersion(context).split(",");
+		String[] versionInfo = CMBLTools.getVersion(context).split(",");
 		PackageInfo ai = null;
 		try {
 			ai = context.getPackageManager().getPackageInfo(
@@ -107,73 +83,5 @@ public class HttpTools {
 		base.setAppVersion(versionInfo[0]);
 		base.setVersionCode(Integer.valueOf(versionInfo[1]));
 		base.setTimestamp(currentTimeMillis);
-	}
-
-	/***
-	 * 
-	 * @author Pro.Linyl
-	 * @CreateTime 2015年6月5日
-	 * @UpdateAuthor Pro.Linyl
-	 * @UpdateTime 2015年6月5日
-	 * @description MD5加密方法
-	 *
-	 * @param string 需加密的参数
-	 * @return 加密后的字符串
-	 */
-	public static String md5(String string) {
-	    byte[] hash;
-	    try {
-	        hash = MessageDigest.getInstance("MD5").digest(string.getBytes("UTF-8"));
-	    } catch (NoSuchAlgorithmException e) {
-	        throw new RuntimeException("Huh, MD5 should be supported?", e);
-	    } catch (UnsupportedEncodingException e) {
-	        throw new RuntimeException("Huh, UTF-8 should be supported?", e);
-	    }
-
-	    StringBuilder hex = new StringBuilder(hash.length * 2);
-	    for (byte b : hash) {
-	        if ((b & 0xFF) < 0x10) hex.append("0");
-	        hex.append(Integer.toHexString(b & 0xFF));
-	    }
-	    return hex.toString();
-	}
-
-	/***
-	 * 
-	 * @author Pro.Linyl
-	 * @CreateTime 2015年6月5日
-	 * @UpdateAuthor Pro.Linyl
-	 * @UpdateTime 2015年6月5日
-	 * @description 网络链接判断
-	 *
-	 * @param context 上下文对象
-	 * @return true 为已连接  false 为未连接
-	 */
-	public static boolean isConnection(Context context) {
-		ConnectivityManager manager = (ConnectivityManager) context
-				.getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo info = manager.getActiveNetworkInfo();
-		if (info != null) {
-			return info.isAvailable();
-		}
-		return false;
-	}
-	
-	/***
-	 * 判断字符串非空，非null
-	 * @author Pro.Linyl
-	 * @CreateTime 2015年6月18日
-	 * @UpdateAuthor 
-	 * @UpdateTime	
-	 * @description
-	 *
-	 * @param text 需要判断的字符串
-	 * @return
-	 */
-	public static boolean isValueEmpty(String text) {
-		if (text != null && (!text.trim().equals("") || !text.trim().equals("null"))) {
-			return false;
-		}
-		return true;
 	}
 }

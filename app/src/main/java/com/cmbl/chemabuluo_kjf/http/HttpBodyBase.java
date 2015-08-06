@@ -9,6 +9,7 @@ package com.cmbl.chemabuluo_kjf.http;
 import android.app.Application;
 
 import com.cmbl.chemabuluo_kjf.base.FinalValue;
+import com.witalk.widget.CMBLTools;
 
 import org.json.JSONObject;
 
@@ -101,8 +102,8 @@ public abstract class HttpBodyBase {
 	 *
 	 */
 	protected void initAppSign() {
-		appSign = HttpTools.md5(appKey + appVersion + appClient + timestamp
-				+ token + appSecret + HttpTools.md5(params.toString()));
+		appSign = CMBLTools.md5(appKey + appVersion + appClient + timestamp
+				+ token + appSecret + CMBLTools.md5(params.toString()));
 	}
 
 	/***

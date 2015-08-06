@@ -24,4 +24,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile project(':kJFrame')
     compile project(':MyWidget')
+    compile files('libs/libammsdk.jar')
+    compile files('libs/svn2924_open_sdk.jar')
+    compile files('libs/weibosdkcore.jar')
+    compile files('libs/mta-sdk-1.6.2.jar')
 }

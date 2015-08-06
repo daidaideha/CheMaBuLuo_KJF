@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="vifrification">#00000000</color>   <!-- 透明 -->
     <color name="color_bg">#F1F1F1</color>
     <color name="color_index_box">#66FFFFFF</color>
     <color name="color_index_box_text">#CCFFFFFF</color>

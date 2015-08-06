@@ -12,7 +12,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import com.cmbl.chemabuluo_kjf.R;
 import com.cmbl.chemabuluo_kjf.base.FinalValue;
+import com.witalk.widget.CMBLTools;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,8 +58,8 @@ public class HttpThread {
             return;
         }
         KJHttp kjh = new KJHttp();
-        if (!HttpTools.isConnection(context)) {
-            ViewInject.toast("网络未连接,请打开网络后重新操作！");
+        if (!CMBLTools.isConnection(context)) {
+            ViewInject.toast(context.getString(R.string.err_net_link));
         } else {
             kjh.get(bodyBase.getUrl(), handler);
         }
@@ -78,10 +80,10 @@ public class HttpThread {
 			return;
 		}
 		HttpParams params = new HttpParams();
-		if (!HttpTools.isValueEmpty(bodyBase.getToken())) {
+		if (!CMBLTools.isValueEmpty(bodyBase.getToken())) {
 			params.put("token", bodyBase.getToken());
 		}
-		if (!HttpTools.isValueEmpty(bodyBase.getParams().toString())) {
+		if (!CMBLTools.isValueEmpty(bodyBase.getParams().toString())) {
 			params.put("params", bodyBase.getParams().toString());
 		}
 		params.put("timestamp", bodyBase.getTimestamp() + "");
@@ -91,8 +93,8 @@ public class HttpThread {
 		params.put("appVersion", bodyBase.getAppVersion());
 		params.put("versionCode", bodyBase.getVersionCode() + "");
 		KJHttp kjh = new KJHttp();
-		if (!HttpTools.isConnection(context)) {
-            ViewInject.toast("网络未连接,请打开网络后重新操作！");
+		if (!CMBLTools.isConnection(context)) {
+            ViewInject.toast(context.getString(R.string.err_net_link));
 		} else {
 			kjh.post(bodyBase.getUrl(), params, handler);
 		}
@@ -113,10 +115,10 @@ public class HttpThread {
 			return;
 		}
 		HttpParams params = new HttpParams();
-		if (!HttpTools.isValueEmpty(bodyBase.getToken())) {
+		if (!CMBLTools.isValueEmpty(bodyBase.getToken())) {
 			params.put("token", bodyBase.getToken());
 		}
-		if (!HttpTools.isValueEmpty(bodyBase.getParams().toString())) {
+		if (!CMBLTools.isValueEmpty(bodyBase.getParams().toString())) {
 			params.put("params", bodyBase.getParams().toString());
 		}
 		params.put("timestamp", bodyBase.getTimestamp() + "");
@@ -126,8 +128,8 @@ public class HttpThread {
 		params.put("appVersion", bodyBase.getAppVersion());
 		params.put("versionCode", bodyBase.getVersionCode() + "");
 		KJHttp kjh = new KJHttp();
-		if (!HttpTools.isConnection(context)) {
-            ViewInject.toast("网络未连接,请打开网络后重新操作！");
+		if (!CMBLTools.isConnection(context)) {
+            ViewInject.toast(context.getString(R.string.err_net_link));
 		} else {
 			kjh.jsonPost(bodyBase.getUrl(), params, getCallBack(handler, bodyBase.getAction()));
 		}
@@ -173,7 +175,7 @@ public class HttpThread {
 			@Override
 			public void onFailure(int errorNo, String strMsg) {
 				super.onFailure(errorNo, strMsg);
-                ViewInject.toast("网络请求失败，请保持网络畅通！");
+                ViewInject.toast(context.getString(R.string.err_net_link));
 			}
 
 			@Override

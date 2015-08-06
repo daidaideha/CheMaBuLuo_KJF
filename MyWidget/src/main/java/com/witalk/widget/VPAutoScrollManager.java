@@ -36,9 +36,7 @@ public class VPAutoScrollManager {
      */
     public void startScroll() {
         if (mViewPager.getAdapter().getCount() > 1) {
-            if (scheduledExecutorService != null) {
-                scheduledExecutorService = null;
-            }
+            stopScroll();
             if (scrollTask == null) {
                 scrollTask = new ScrollTask();
             }
@@ -48,6 +46,18 @@ public class VPAutoScrollManager {
                     TimeUnit.SECONDS);
 //            Log.i("item", "item create service");
         }
+    }
+
+    /**
+     * 是否在播放
+     *
+     * @return
+     */
+    public boolean isPlay() {
+        if (scheduledExecutorService != null) {
+            return scheduledExecutorService.isShutdown() ? false : true;
+        } else
+            return false;
     }
 
     /***

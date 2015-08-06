@@ -8,9 +8,17 @@ package com.witalk.widget;
 
 public final class R {
 	public static final class attr {
-		public static final int border_inside_color = 0x7f010001;
-		public static final int border_outside_color = 0x7f010002;
-		public static final int border_thickness = 0x7f010000;
+		public static final int border_inside_color = 0x7f010009;
+		public static final int border_outside_color = 0x7f01000a;
+		public static final int border_thickness = 0x7f010008;
+		public static final int max = 0x7f010005;
+		public static final int roundColor = 0x7f010000;
+		public static final int roundProgressColor = 0x7f010001;
+		public static final int roundWidth = 0x7f010002;
+		public static final int style = 0x7f010007;
+		public static final int textColor = 0x7f010003;
+		public static final int textIsDisplayable = 0x7f010006;
+		public static final int textSize = 0x7f010004;
 	}
 	public static final class drawable {
 		public static final int bg_refresh_00 = 0x7f020000;
@@ -66,12 +74,14 @@ public final class R {
 		public static final int yu2 = 0x7f020032;
 	}
 	public static final class id {
-		public static final int imageview = 0x7f060004;
-		public static final int pull_to_load_image = 0x7f060002;
-		public static final int pull_to_load_progress = 0x7f060001;
-		public static final int pull_to_load_text = 0x7f060003;
-		public static final int pull_to_refresh_header = 0x7f060000;
-		public static final int tv_refresh = 0x7f060005;
+		public static final int FILL = 0x7f060000;
+		public static final int STROKE = 0x7f060001;
+		public static final int imageview = 0x7f060006;
+		public static final int pull_to_load_image = 0x7f060004;
+		public static final int pull_to_load_progress = 0x7f060003;
+		public static final int pull_to_load_text = 0x7f060005;
+		public static final int pull_to_refresh_header = 0x7f060002;
+		public static final int tv_refresh = 0x7f060007;
 	}
 	public static final class layout {
 		public static final int widget_refresh_footer = 0x7f030000;
@@ -85,7 +95,16 @@ public final class R {
 		public static final int AppTheme = 0x7f040001;
 	}
 	public static final class styleable {
-		public static final int[] roundedimageview = { 0x7f010000, 0x7f010001, 0x7f010002 };
+		public static final int[] RoundProgressBar = { 0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003, 0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007 };
+		public static final int RoundProgressBar_max = 5;
+		public static final int RoundProgressBar_roundColor = 0;
+		public static final int RoundProgressBar_roundProgressColor = 1;
+		public static final int RoundProgressBar_roundWidth = 2;
+		public static final int RoundProgressBar_style = 7;
+		public static final int RoundProgressBar_textColor = 3;
+		public static final int RoundProgressBar_textIsDisplayable = 6;
+		public static final int RoundProgressBar_textSize = 4;
+		public static final int[] roundedimageview = { 0x7f010008, 0x7f010009, 0x7f01000a };
 		public static final int roundedimageview_border_inside_color = 1;
 		public static final int roundedimageview_border_outside_color = 2;
 		public static final int roundedimageview_border_thickness = 0;
